@@ -1,0 +1,50 @@
+<div class="container-login-register" id="container">
+    <div class="form-container sign-up">
+        <span>Apple</span>
+        <form [formGroup]="registerForm" (ngSubmit)="register()">
+            <h3>Sign Up</h3>
+            <input type="email" placeholder="Email" formControlName="email">
+            <div class="error-msg" *ngIf="registerForm.get('email')?.dirty && registerForm.get('email')?.errors?.['required']">Email is required!</div>
+            <div class="error-msg" *ngIf="registerForm.get('email')?.dirty && registerForm.get('email')?.errors?.['pattern']">Email is invalid!</div>
+
+            <ng-container formGroupName="passGroup">
+                <input type="password" placeholder="Password" formControlName="password">
+                <div class="error-msg" *ngIf="registerForm.get('passGroup')?.get('password')?.dirty && registerForm.get('passGroup')?.get('password')?.errors?.['required']">Password is required!</div>
+
+                <input type="password" placeholder="Repeat Password" formControlName="rePassword">
+                <div class="error-msg" *ngIf="registerForm.get('passGroup')?.get('rePassword')?.dirty && (registerForm.get('passGroup')?.get('password')?.errors?.['required'] || registerForm.get('passGroup')?.errors?.['matchPasswordsValidator'])">Passwords don't match!</div>
+            </ng-container>
+                <div class="error-msg" *ngIf="registerErrorMessage">{{registerErrorMessage}}!</div>
+            <button class="white">Sign Up</button>
+        </form>
+    </div>
+    <div class="form-container sign-in">
+        <span>Apple</span>
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <h3>Sign In</h3>
+            <input type="email" placeholder="Email" formControlName="email">
+            <div class="error-msg" *ngIf="loginForm.get('email')?.dirty && loginForm.get('email')?.errors?.['required']">Email is required!</div>
+            <div class="error-msg" *ngIf="loginForm.get('email')?.dirty && loginForm.get('email')?.errors?.['pattern']">Email is invalid!</div>
+
+            <input type="password" placeholder="Password" formControlName="password">
+            <div class="error-msg" *ngIf="loginForm.get('password')?.dirty && loginForm.get('password')?.errors?.['required']">Password is required!</div>
+            <div class="error-msg" *ngIf="loginErrorMessage">Incorrect email or password!</div>
+
+            <button class="white">Sign In</button>
+        </form>
+    </div>
+    <div class="toggle-container">
+        <div class="toggle">
+            <div class="toggle-panel toggle-left">
+                <h3>Welcome back!</h3>
+                <p>Enter your personal details to use all of the site features</p>
+                <button class="hidden" id="login">Sign In</button>
+            </div>
+            <div class="toggle-panel toggle-right">
+                <h3>Hello, Customer!</h3>
+                <p>Register with your personal details to use all of the site features</p>
+                <button class="hidden" id="register">Sign Up</button>
+            </div>
+        </div>
+    </div>
+</div>
