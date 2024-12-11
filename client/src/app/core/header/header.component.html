@@ -1,0 +1,16 @@
+<header class="site-header">
+    <nav>
+        <ul>
+            <li class="site-title"><a routerLink ="/">Apple</a></li>
+            <li><a routerLink="/">Store</a></li>
+            <li><a routerLink="/imac-catalog">Mac</a></li>
+            <li><a routerLink="/ipad-catalog">iPad</a></li>
+            <li><a routerLink="/iphone-catalog">iPhone</a></li>
+            <li><a routerLink="/add-products">Add Products</a></li>
+            <li><a routerLink="/add-accessories">Add Accessories</a></li>
+            <li><a routerLink="/support">Support</a></li>
+            <li *ngIf="!isLoggedIn"><a routerLink="/login-register" class="login-register-logout">Login</a></li>
+            <li *ngIf="isLoggedIn" (click)="logout()"><a class="login-register-logout">Logout</a></li>
+        </ul>
+    </nav>
+</header>
