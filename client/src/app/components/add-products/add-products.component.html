@@ -1,0 +1,127 @@
+<section class="site-section">
+    <div class="add-products">
+        <div class="form-add-product">
+            <div class="toggle-button">
+                <input type="radio" name="toggle" id="iphone" class="toggle-input" checked />
+                <input type="radio" name="toggle" id="ipad" class="toggle-input" />
+                <input type="radio" name="toggle" id="imac" class="toggle-input" />
+
+                <div class="toggle-container-products">
+                    <label for="iphone" class="toggle-label" onclick="showForm('iphone')"><img src="../../../assets/images/apple-iphone/iphone.svg" alt=""></label>
+                    <label for="ipad" class="toggle-label" onclick="showForm('ipad')"><img src="../../../assets/images/apple-ipad/ipad.svg" alt=""></label>
+                    <label for="imac" class="toggle-label" onclick="showForm('imac')"><img src="../../../assets/images/apple-imac/imac.svg" alt=""></label>
+                    <div class="toggle-circle"></div>
+                </div>
+            </div>
+            <form class="form" id="iphone-form" #iphoneForm="ngForm" (ngSubmit)="addIphone(iphoneForm)">
+                <span class="iphone-add-span">iPhone</span>
+                <h3>iPhone</h3>
+                <input type="text" name="name" placeholder="Name" ngModel #inputNameIphone="ngModel" required minlength="6" maxlength="17">
+                <div class="error-msg" *ngIf="inputNameIphone.dirty && inputNameIphone.errors?.['required']">Name is required!</div>
+                <div class="error-msg" *ngIf="inputNameIphone.dirty && inputNameIphone.errors?.['minlength']">Name must be between 6 and 17 charachters</div>
+
+                <input type="text" name="imageUrl" placeholder="Image URL" ngModel #inputImageUrlIphone="ngModel" required pattern="^https?:\/\/.+">
+                <div class="error-msg" *ngIf="inputImageUrlIphone.dirty && inputImageUrlIphone.errors?.['required']">Image URL is required!</div>
+                <div class="error-msg" *ngIf="inputImageUrlIphone.dirty && inputImageUrlIphone.errors?.['pattern']">Provide a valid Image URL!</div>
+
+                <input type="text" name="color" placeholder="Color" ngModel #inputColorIphone="ngModel" required minlength="3" maxlength="20">
+                <div class="error-msg" *ngIf="inputColorIphone.dirty && inputColorIphone.errors?.['required']">Color is required!</div>
+                <div class="error-msg" *ngIf="inputColorIphone.dirty && inputColorIphone.errors?.['minlength']">Color must be between 3 and 20 charachters</div>
+
+                <input type="number" name="batteryLife" placeholder="Battery Life" ngModel #inputBatteryLifeIphone="ngModel" required min="16" max="32">
+                <div class="error-msg" *ngIf="inputBatteryLifeIphone.dirty && inputBatteryLifeIphone.errors?.['required']">Battery Life is required!</div>
+                <div class="error-msg" *ngIf="inputBatteryLifeIphone.dirty && (inputBatteryLifeIphone.errors?.['min'] || inputBatteryLifeIphone.errors?.['max'])">Battery Life must be between 16 and 32 hours</div>
+                
+                <input type="text" name="description" placeholder="Description" ngModel #inputDescriptionIphone="ngModel" required minlength="10" maxlength="30">
+                <div class="error-msg" *ngIf="inputDescriptionIphone.dirty && inputDescriptionIphone.errors?.['required']">Description is required!</div>
+                <div class="error-msg" *ngIf="inputDescriptionIphone.dirty && inputDescriptionIphone.errors?.['minlength']">Description must be between 10 and 30 charachters</div>
+
+                <input type="number" name="display" placeholder="Display (inch)" ngModel #inputDisplayIphone="ngModel" required min="5" max="6.9">
+                <div class="error-msg" *ngIf="inputDisplayIphone.dirty && inputDisplayIphone.errors?.['required']">Display is required!</div>
+                <div class="error-msg" *ngIf="inputDisplayIphone.dirty && (inputDisplayIphone.errors?.['min'] || inputDisplayIphone.errors?.['max'])">Display size must be between 5 and 6.9 inches</div>
+
+                <input type="number" name="storage" placeholder="Storage" ngModel #inputStorageIphone="ngModel" required pattern="^(128|256|512|1024)$">
+                <div class="error-msg" *ngIf="inputStorageIphone.dirty && inputStorageIphone.errors?.['required']">Storage is required!</div>
+                <div class="error-msg" *ngIf="inputStorageIphone.dirty && inputStorageIphone.errors?.['pattern']">Storage size must be 128, 256, 512 or 1024 GB</div>
+
+                <input type="text" name="price" placeholder="Price" ngModel #inputPriceIphone="ngModel" required pattern="^\d{3,4},\d{2}$">
+                <div class="error-msg" *ngIf="inputPriceIphone.dirty && inputPriceIphone.errors?.['required']">Price is required!</div>
+                <div class="error-msg" *ngIf="inputPriceIphone.dirty && inputPriceIphone.errors?.['pattern']">Price must be e.g. xxx,xx or xxxx,xx</div>
+
+                <button>Add Product</button>
+            </form>
+            <form style="display: none;" class="form" id="ipad-form" #ipadForm="ngForm" (ngSubmit)="addIpad(ipadForm)">
+                <span class="ipad-add-span">iPad</span>
+                <h3>iPad</h3>
+                <input type="text" name="name" placeholder="Name" ngModel #inputNameIpad="ngModel" required minlength="4" maxlength="20">
+                <div class="error-msg" *ngIf="inputNameIpad.dirty && inputNameIpad.errors?.['required']">Name is required!</div>
+                <div class="error-msg" *ngIf="inputNameIpad.dirty && inputNameIpad.errors?.['minlength']">Name must be between 4 and 20 charachters</div>
+
+                <input type="text" name="imageUrl" placeholder="Image URL" ngModel #inputImageUrlIpad="ngModel" required pattern="^https?:\/\/.+">
+                <div class="error-msg" *ngIf="inputImageUrlIpad.dirty && inputImageUrlIpad.errors?.['required']">Image URL is required!</div>
+                <div class="error-msg" *ngIf="inputImageUrlIpad.dirty && inputImageUrlIpad.errors?.['pattern']">Provide a valid Image URL!</div>
+
+                <input type="text" name="color" placeholder="Color" ngModel #inputColorIpad="ngModel" required minlength="3" maxlength="20">
+                <div class="error-msg" *ngIf="inputColorIpad.dirty && inputColorIpad.errors?.['required']">Color is required!</div>
+                <div class="error-msg" *ngIf="inputColorIpad.dirty && inputColorIpad.errors?.['minlength']">Color must be between 3 and 20 charachters</div>
+
+                <input type="number" name="batteryLife" placeholder="Battery Life" ngModel #inputBatteryLifeIpad="ngModel" required min="20" max="36">
+                <div class="error-msg" *ngIf="inputBatteryLifeIpad.dirty && inputBatteryLifeIpad.errors?.['required']">Battery Life is required!</div>
+                <div class="error-msg" *ngIf="inputBatteryLifeIpad.dirty && (inputBatteryLifeIpad.errors?.['min'] || inputBatteryLifeIpad.errors?.['max'])">Battery Life must be between 20 and 36 hours</div>
+                
+                <input type="text" name="description" placeholder="Description" ngModel #inputDescriptionIpad="ngModel" required minlength="10" maxlength="66">
+                <div class="error-msg" *ngIf="inputDescriptionIpad.dirty && inputDescriptionIpad.errors?.['required']">Description is required!</div>
+                <div class="error-msg" *ngIf="inputDescriptionIpad.dirty && inputDescriptionIpad.errors?.['minlength']">Description must be between 10 and 66 charachters</div>
+
+                <input type="number" name="display" placeholder="Display (inch)" ngModel #inputDisplayIpad="ngModel" required min="7.9" max="12.9">
+                <div class="error-msg" *ngIf="inputDisplayIpad.dirty && inputDisplayIpad.errors?.['required']">Display is required!</div>
+                <div class="error-msg" *ngIf="inputDisplayIpad.dirty && (inputDisplayIpad.errors?.['min'] || inputDisplayIpad.errors?.['max'])">Display size must be between 7.9 and 12.9 inches</div>
+
+                <input type="number" name="storage" placeholder="Storage" ngModel #inputStorageIpad="ngModel" required pattern="^(256|512|1024|2048)$">
+                <div class="error-msg" *ngIf="inputStorageIpad.dirty && inputStorageIpad.errors?.['required']">Storage is required!</div>
+                <div class="error-msg" *ngIf="inputStorageIpad.dirty && inputStorageIpad.errors?.['pattern']">Storage size must be 256, 512, 1024 or 2048 GB</div>
+
+                <input type="text" name="price" placeholder="Price" ngModel #inputPriceIpad="ngModel" required pattern="^\d{3,4},\d{2}$">
+                <div class="error-msg" *ngIf="inputPriceIpad.dirty && inputPriceIpad.errors?.['required']">Price is required!</div>
+                <div class="error-msg" *ngIf="inputPriceIpad.dirty && inputPriceIpad.errors?.['pattern']">Price must be e.g. xxx,xx or xxxx,xx</div>
+                <button>Add Product</button>
+            </form>
+            <form style="display: none;" class="form" id="imac-form" #imacForm="ngForm" (ngSubmit)="addImac(imacForm)">
+                <span class="imac-add-span">iMac</span>
+                <h3>iMac</h3>
+                <input type="text" name="name" placeholder="Name" ngModel #inputNameImac="ngModel" required minlength="4" maxlength="20">
+                <div class="error-msg" *ngIf="inputNameImac.dirty && inputNameImac.errors?.['required']">Name is required!</div>
+                <div class="error-msg" *ngIf="inputNameImac.dirty && inputNameImac.errors?.['minlength']">Name must be between 4 and 20 charachters</div>
+
+                <input type="text" name="imageUrl" placeholder="Image URL" ngModel #inputImageUrlImac="ngModel" required pattern="^https?:\/\/.+">
+                <div class="error-msg" *ngIf="inputImageUrlImac.dirty && inputImageUrlImac.errors?.['required']">Image URL is required!</div>
+                <div class="error-msg" *ngIf="inputImageUrlImac.dirty && inputImageUrlImac.errors?.['pattern']">Provide a valid Image URL!</div>
+
+                <input type="number" name="cpu" placeholder="CPU" ngModel #inputCpuImac="ngModel" required min="6" max="12">
+                <div class="error-msg" *ngIf="inputCpuImac.dirty && inputCpuImac.errors?.['required']">CPU is required!</div>
+                <div class="error-msg" *ngIf="inputCpuImac.dirty && (inputCpuImac.errors?.['min'] || inputCpuImac.errors?.['max'])">CPU must be between 6 and 12 cores</div>
+
+                <input type="number" name="gpu" placeholder="GPU" ngModel #inputGpuImac="ngModel" required min="6" max="12">
+                <div class="error-msg" *ngIf="inputGpuImac.dirty && inputGpuImac.errors?.['required']">GPU is required!</div>
+                <div class="error-msg" *ngIf="inputGpuImac.dirty && (inputGpuImac.errors?.['min'] || inputGpuImac.errors?.['max'])">GPU must be between 6 and 12 cores</div>
+                
+                <input type="text" name="description" placeholder="Description" ngModel #inputDescriptionImac="ngModel" required minlength="10" maxlength="70">
+                <div class="error-msg" *ngIf="inputDescriptionImac.dirty && inputDescriptionImac.errors?.['required']">Description is required!</div>
+                <div class="error-msg" *ngIf="inputDescriptionImac.dirty && inputDescriptionImac.errors?.['minlength']">Description must be between 10 and 70 charachters</div>
+
+                <input type="number" name="display" placeholder="Display (inch)" ngModel #inputDisplayImac="ngModel" required min="21.5" max="32">
+                <div class="error-msg" *ngIf="inputDisplayImac.dirty && inputDisplayImac.errors?.['required']">Display is required!</div>
+                <div class="error-msg" *ngIf="inputDisplayImac.dirty && (inputDisplayImac.errors?.['min'] || inputDisplayImac.errors?.['max'])">Display size must be between 21.5 and 32 inches</div>
+
+                <input type="number" name="storage" placeholder="Storage" ngModel #inputStorageImac="ngModel" required pattern="^(256|512|1024|2048)$">
+                <div class="error-msg" *ngIf="inputStorageImac.dirty && inputStorageImac.errors?.['required']">Storage is required!</div>
+                <div class="error-msg" *ngIf="inputStorageImac.dirty && inputStorageImac.errors?.['pattern']">Storage size must be 256, 512, 1024 or 2048 GB</div>
+
+                <input type="text" name="price" placeholder="Price" ngModel #inputPriceImac="ngModel" required pattern="^\d{4},\d{2}$">
+                <div class="error-msg" *ngIf="inputPriceImac.dirty && inputPriceImac.errors?.['required']">Price is required!</div>
+                <div class="error-msg" *ngIf="inputPriceImac.dirty && inputPriceImac.errors?.['pattern']">Price must be e.g. xxxx,xx</div>
+                <button>Add Product</button>
+            </form>
+        </div>
+    </div>
+</section>
