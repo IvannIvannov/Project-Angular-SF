@@ -1,0 +1,53 @@
+<section class="site-section ipad-details-container">
+    <div class="ipad-details-product">
+        <div class="ipad-details-image">
+            <img src="{{ ipad.imageUrl }}">
+        </div>
+        <div class="ipad-details">
+            <h3>{{ ipad.name }}</h3>
+            <div class="ipad-details-list-content">
+                <ul class="ipad-details-list">
+                    <li>
+                        <strong>Color:</strong>
+                        <p>{{ ipad.color }}</p>
+                    </li>
+                    <li>
+                        <strong>Display:</strong>
+                        <p>{{ ipad.display }}-inch</p>
+                    </li>
+                    <li>
+                        <strong>Storage:</strong>
+                        <p>{{ ipad.storage }} GB</p>
+                    </li>
+                    <li>
+                        <strong>Battery Life:</strong>
+                        <p>Up to {{ ipad.batteryLife }} hours video playback</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="ipad-details-description">
+                <p>{{ ipad.description }}</p>
+            </div>
+        </div>
+        <div class="ipad-details-price-container">
+            <div class="ipad-details-price-box">
+                <span class="ipad-details-price">${{ ipad.price && ipad.price.split(",")[0] }}<span class="ipad-details-superscript">,{{ ipad.price && ipad.price.split(",")[1] }}</span></span>
+            </div>
+            <div *ngIf="isOwner" class="ipad-details-buttons">
+                <div class="ipad-edit-delete">
+                    <a class="ipad-edit-button" routerLink="/ipad-catalog/ipad-edit/{{ ipad._id }}">Edit</a>
+                    <a class="ipad-delete-button" (click)="deleteIpad()">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="site-section imac-accessories-container">
+    <h3>Accessories</h3>
+    <div class="imac-accessories-grid">
+        <div *ngFor="let accessory of accessories" class="imac-accessory-card">
+            <img src="{{ accessory.imageUrl }}">
+            <h4>{{ accessory.name }}</h4>
+        </div>
+    </div>
+</section>
