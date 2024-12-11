@@ -1,0 +1,53 @@
+<section class="site-section imac-details-container">
+    <div class="imac-details-product">
+        <div class="imac-details-image">
+            <img src="{{ imac.imageUrl }}">
+        </div>
+        <div class="imac-details">
+            <h3>iMac Pro</h3>
+            <div class="imac-details-list-content">
+                <ul class="imac-details-list">
+                    <li>
+                        <strong>CPU:</strong>
+                        <p>{{ imac.cpu }}-Core</p>
+                    </li>
+                    <li>
+                        <strong>GPU:</strong>
+                        <p>{{ imac.gpu }}-Core</p>
+                    </li>
+                    <li>
+                        <strong>Display:</strong>
+                        <p>{{ imac.display }}-inch</p>
+                    </li>
+                    <li>
+                        <strong>Storage:</strong>
+                        <p>{{ imac.storage }} GB</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="imac-details-description">
+                <p>{{ imac.description }}</p>
+            </div>
+        </div>
+        <div class="imac-details-price-container">
+            <div class="imac-details-price-box">
+                <span class="imac-details-price">${{ imac.price && imac.price.split(",")[0] }}<span class="imac-details-superscript">,{{ imac.price && imac.price.split(",")[1] }}</span></span>
+            </div>
+            <div *ngIf="isOwner" class="imac-details-buttons">
+                <div class="imac-edit-delete">
+                    <a class="imac-edit-button" routerLink="/imac-catalog/imac-edit/{{ imac._id }}">Edit</a>
+                    <a class="imac-delete-button" (click)="deleteImac()">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="site-section imac-accessories-container">
+    <h3>Accessories</h3>
+    <div class="imac-accessories-grid">
+        <div *ngFor="let accessory of accessories" class="imac-accessory-card">
+            <img src="{{ accessory.imageUrl }}">
+            <h4>{{ accessory.name }}</h4>
+        </div>
+    </div>
+</section>
