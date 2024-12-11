@@ -1,0 +1,53 @@
+<section class="site-section iphone-details-container">
+    <div class="iphone-details-product">
+        <div class="iphone-details-image">
+            <img src="{{ iphone.imageUrl }}">
+        </div>
+        <div class="iphone-details">
+            <h3>{{ iphone.name }}</h3>
+            <div class="iphone-details-list-content">
+                <ul class="iphone-details-list">
+                    <li>
+                        <strong>Color:</strong>
+                        <p>{{ iphone.color }}</p>
+                    </li>
+                    <li>
+                        <strong>Display:</strong>
+                        <p>{{ iphone.display }}-inch</p>
+                    </li>
+                    <li>
+                        <strong>Storage:</strong>
+                        <p>{{ iphone.storage }} GB</p>
+                    </li>
+                    <li>
+                        <strong>Battery Life:</strong>
+                        <p>Up to {{ iphone.batteryLife }} hours video playback</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="iphone-details-description">
+                <p>{{ iphone.description }}</p>
+            </div>
+        </div>
+        <div class="iphone-details-price-container">
+            <div class="iphone-details-price-box">
+                <span class="iphone-details-price">${{ iphone.price && iphone.price.split(",")[0] }}<span class="iphone-details-superscript">,{{ iphone.price && iphone.price.split(",")[1] }}</span></span>
+            </div>
+            <div *ngIf="isOwner" class="iphone-details-buttons">
+                <div class="iphone-edit-delete">
+                    <a class="iphone-edit-button" routerLink="/iphone-catalog/iphone-edit/{{ iphone._id }}">Edit</a>
+                    <a class="iphone-delete-button" (click)="deleteIphone()">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="site-section imac-accessories-container">
+    <h3>Accessories</h3>
+    <div class="imac-accessories-grid">
+        <div *ngFor="let accessory of accessories" class="imac-accessory-card">
+            <img src="{{ accessory.imageUrl }}">
+            <h4>{{ accessory.name }}</h4>
+        </div>
+    </div>
+</section>
